@@ -32,6 +32,11 @@
       src="https://img.shields.io/badge/twitter-@StarshipPrompt-1DA1F3?style=flat-square"
       alt="Sigue a @StarshipPrompt en Twitter"
  /></a>
+  <a href="https://stand-with-ukraine.pp.ua"
+    ><img
+      src="https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraineFlat.svg"
+      alt="Stand With Ukraine"
+ /></a>
 </p>
 
 <p align="center">
@@ -147,8 +152,6 @@
  /></a>
 </p>
 
-[![SWUbanner](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://vshymanskyy.github.io/StandWithUkraine)
-
 <h1></h1>
 
 <img
@@ -229,6 +232,7 @@ Alternativamente, instale Starship usando cualquiera de los siguientes gestores 
 | Gentoo             | [Paquetes Gentoo](https://packages.gentoo.org/packages/app-shells/starship)                     | `emerge app-shells/starship`                                                   |
 | Manjaro            |                                                                                                 | `pacman -S starship`                                                           |
 | NixOS              | [nixpkgs](https://github.com/NixOS/nixpkgs/blob/master/pkgs/tools/misc/starship/default.nix)    | `nix-env -iA nixpkgs.starship`                                                 |
+| openSUSE           | [OSS](https://software.opensuse.org/package/starship)                                           | `zypper in starship`                                                           |
 | Void Linux         | [Void Linux Packages](https://github.com/void-linux/void-packages/tree/master/srcpkgs/starship) | `xbps-install -S starship`                                                     |
 
 </details>
@@ -334,20 +338,14 @@ eval $(starship init ion)
 <details>
 <summary>Nushell</summary>
 
-Añade lo siguiente al final de tu archivo Nushell env (encuéntralo ejecutando `$nu.env-path` en Nushell):
+Add the following to the end of your Nushell configuration (find it by running `$nu.config-path` in Nushell):
 
 ```sh
-mkdir ~/.cache/starship
-starship init nu | save -f ~/.cache/starship/init.nu
+mkdir ($nu.data-dir | path join "vendor/autoload")
+starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
 ```
 
-Añade lo siguiente al final de tu configuración de Nushell (encuéntrala ejecutando `$nu.config-path`):
-
-```sh
-use ~/.cache/starship/init.nu
-```
-
-Nota: Sólo se admite Nushell v0.78+
+Note: Only Nushell v0.96+ is supported
 
 </details>
 
@@ -427,9 +425,16 @@ Por favor, revisa estas obras anteriores que ayudaron a inspirar la creación de
 
 Apoya este proyecto [convirtiéndote en patrocinador](https://github.com/sponsors/starship). Tu nombre o logo aparecerá aquí con un enlace a tu sitio web.
 
-**Patrocinadores**
+## 🔒 Code Signing Policy
 
-- [Appwrite](https://appwrite.io/)
+Free code signing provided by [SignPath.io](https://signpath.io), certificate by [SignPath Foundation](https://signpath.org).
+
+Code Signing Roles:
+
+- Reviewers: [Astronauts](https://github.com/orgs/starship/teams/astronauts)
+- Approvers and Authors: [Mission Control](https://github.com/orgs/starship/teams/mission-control)
+
+This program will not transfer any information to other networked systems unless specifically requested by the user or the person installing or operating it.
 
 <p align="center">
     <br>
