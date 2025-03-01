@@ -9,7 +9,10 @@ use std::convert::TryInto;
 const SHLVL_ENV_VAR: &str = "SHLVL";
 
 pub fn module<'a>(context: &'a Context) -> Option<Module<'a>> {
-    let shlvl = context.get_env(SHLVL_ENV_VAR)?.parse::<i64>().ok()?;
+    let props = &context.properties;
+    let shlvl = props
+        .shlvl
+        .or_else(|| context.get_env(SHLVL_ENV_VAR)?.parse::<i64>().ok())?;
 
     let mut module = context.new_module("shlvl");
     let config: ShLvlConfig = ShLvlConfig::try_load(module.config);
@@ -242,7 +245,7 @@ mod tests {
                     disabled = false
                     threshold = threshold
                 })
-                .env(SHLVL_ENV_VAR, format!("{}", shlvl))
+                .env(SHLVL_ENV_VAR, format!("{shlvl}"))
                 .collect()
         }
 
